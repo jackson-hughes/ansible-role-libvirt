@@ -10,4 +10,11 @@
     name: libvirtd
     state: started
     enabled: yes
- 
+
+- name: Add users to libvirt group
+  user: 
+    name: "{{ item }}"
+    groups: libvirt
+    append: yes
+  with_items:
+    - "{{ libvirt_rw_users | default([]) }}"
