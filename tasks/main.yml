@@ -3,7 +3,7 @@
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
-  with_items: virt_packages
+  with_items: "{{ virt_packages }}"
 
 - name: Start and enable libvirtd
   service:
